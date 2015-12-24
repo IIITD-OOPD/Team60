@@ -25,7 +25,8 @@
 		for (var i = 0; i < radios.length; i++) 
 	    {
 			if (radios.item(i).checked) {
-                alert("checked!!");
+				document.myform.id.value = radios.item(i).value;		
+                alert(radios.item(i).value+"checked!!");
                 flag=1;
                 break;
             } 
@@ -36,15 +37,17 @@
 		}
 		
 	}
+	
+	
 </script>
 </head>
 <body bgcolor="black">
-<div style="text-align:center ;margin-top: 5%">
-<form action='neeti/hello' method='post' enctype="multipart/form-data">
+<div style="text-align:center ;margin-top: 2%">
+<form action="UploadServlet" method="post" enctype="multipart/form-data" target="myframe0">
 <font color="white">
 Choose file..
 <input type="file" name="filess" size="20"></input>
-<input type="submit" name="button_upload" value="upload"></input>
+<input type="submit" name="button_upload" value="upload" ></input>
 </font>
 </form>
 <form name="myform" action="Circuit.jsp"  method="post" target="myframe0" >
@@ -60,17 +63,24 @@ Choose file..
 	m_Statement = con.createStatement();
     query = "SELECT * FROM circuits";    
     m_ResultSet = m_Statement.executeQuery(query);	
-
+	int count = 1;
 if(m_ResultSet!=null)
 {
 while (m_ResultSet.next()) {           
-
+		count++;
       %>
-<input type="radio" name="ckt" value="<%=m_ResultSet.getString(1)%>" ><%=m_ResultSet.getString(2) %><br>
+<input type="radio" name="ckt" value="<%=m_ResultSet.getString(1)%>" ><%=m_ResultSet.getString(2) %>
 
-<% }
+<% if(count>4){
+	count = 0;
+	%><br><%
 }
+}
+}
+con.close();
 %>
+<br>
+<input type="hidden" name="id" value="1111">
 <input type="submit" value="Submit" onclick="check()">
 </font>
 </form>

@@ -4,13 +4,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-
+<%@ page import="neeti.logicGates.*" %>
 </head>
 <body>
+<%= request.getParameter("id") %>
+
+<% AND and1 = new AND(); %>
 <table >
   <tr>
     <td><img src="0.png" width="70px" height="70px"></img></td>
-    <td><img src="not-gate.png" width="70px" height="70px"></img></td> 
+    <td><div id=1><img src="not-gate.png" width="70px" height="70px"></img></div></td> 
     <td><img src="1.png" width="70px" height="7px"></img></td>
     <td><img src="1-11.png" width="70px" height="70px"></img></td>
     <td><img src="or-gate.png" width="70px" height="70px"></img></td> 

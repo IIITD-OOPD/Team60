@@ -16,14 +16,16 @@ public class DBConnection implements DBHelper {
 		public DBConnection(String driver, String url, String dbName, String user, String pwd)
 		{
 			this.url = url;
-			dbname = dbName;
+			this.dbname = dbName;
 			this.user = user;
 			this.pwd = pwd;
 			try {
 				Class.forName(driver);
+				con = DriverManager.getConnection(url+dbname, user, pwd);
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
 			}
+			catch(SQLException e){}
 		}
 
 		
@@ -37,6 +39,19 @@ public class DBConnection implements DBHelper {
 				throw new Exception("Error 1000 has occured");
 			}
 			return con;
+		}
+		
+		public ResultSet executeSelect(String sql,int errorCode)throws Exception {
+			try {
+				Statement stmt = con.createStatement();
+				ResultSet r = stmt.executeQuery(sql);
+				
+				return r;
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+				throw new Exception("error occured, code : " + errorCode);
+			}
 		}
 		
 		public void executeDDLOrDML(String sql, int errorCode) throws Exception {

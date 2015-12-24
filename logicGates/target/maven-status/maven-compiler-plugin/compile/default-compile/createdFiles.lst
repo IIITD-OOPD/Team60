@@ -1,0 +1,8 @@
+neeti\logicGates\AND.class
+neeti\logicGates\App.class
+neeti\logicGates\NOT.class
+neeti\logicGates\NOR.class
+neeti\logicGates\OR.class
+neeti\logicGates\XOR.class
+neeti\logicGates\NAND.class
+neeti\logicGates\XNOR.class
