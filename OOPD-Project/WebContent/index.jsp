@@ -16,6 +16,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<title>OOPD-Project</title>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <script TYPE="text/javascript">
 	function check()
@@ -26,7 +27,7 @@
 	    {
 			if (radios.item(i).checked) {
 				document.myform.id.value = radios.item(i).value;		
-                alert(radios.item(i).value+"checked!!");
+                
                 flag=1;
                 break;
             } 
@@ -47,7 +48,7 @@
 <font color="white">
 Choose file..
 <input type="file" name="filess" size="20"></input>
-<input type="submit" name="button_upload" value="upload" ></input>
+<input type="submit" name="button_upload" value="upload" onclick="parent.f2.location.reload(1);"></input>
 </font>
 </form>
 <form name="myform" action="Circuit.jsp"  method="post" target="myframe0" >
@@ -81,7 +82,7 @@ con.close();
 %>
 <br>
 <input type="hidden" name="id" value="1111">
-<input type="submit" value="Submit" onclick="check()">
+<input type="submit" value="Submit" onclick="check();parent.f2.location.reload(1);">
 </font>
 </form>
 

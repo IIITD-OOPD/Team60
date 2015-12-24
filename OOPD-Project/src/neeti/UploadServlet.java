@@ -2,10 +2,9 @@ package neeti;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
+
 import java.sql.ResultSet;
-import java.sql.Statement;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -91,7 +90,7 @@ public class UploadServlet extends HttpServlet {
 	        		circuit_id = Integer.parseInt(r.getString(1)); 
 	        	}
 	        	
-	        
+	        	request.setAttribute("id", circuit_id);
 		    	 DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
 		         DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();	         
 		         Document doc = docBuilder.parse (new File("C://Users//user//Desktop//Team_60//"+name));	        
@@ -147,7 +146,7 @@ public class UploadServlet extends HttpServlet {
 		            t.printStackTrace ();
 		            }
 	        
-	        request.getRequestDispatcher("/inputCheckboxes.jsp").forward(request, response);
+	        request.getRequestDispatcher("/Circuit.jsp").forward(request, response);
 	     
 	    }
 	   
